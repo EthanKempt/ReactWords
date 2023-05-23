@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Row from './Row';
 
 export default function Grid() {
-  const [selected, setSelected] = useState(6);
+  useEffect(() => {
+    const doSomething = () => { alert('a') };
+    window.addEventListener('click', doSomething);
+
+    return () => {
+      window.removeEventListener('click', doSomething);
+    }
+  });
+
+  const [selected, setSelected] = useState(4);
   return (
     <div>
       <Row id='1' isSelected={selected == 1} />

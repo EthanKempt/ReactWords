@@ -5,11 +5,11 @@ export default function Row({ isSelected }) {
   }
   return (
     <div className={ s }>
-      <input maxLength='1' type='text' className='box' />
-      <input maxLength='1' type='text' className='box' />
-      <input maxLength='1' type='text' className='box' />
-      <input maxLength='1' type='text' className='box' />
-      <input maxLength='1' type='text' className='box' />
+      <input maxLength='1' type='text' className='box' disabled />
+      <input maxLength='1' type='text' className='box' disabled />
+      <input maxLength='1' type='text' className='box' disabled />
+      <input maxLength='1' type='text' className='box' disabled />
+      <input maxLength='1' type='text' className='box' disabled />
     </div>
   );
 }
