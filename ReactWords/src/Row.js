@@ -1,4 +1,4 @@
-export default function Row({ isSelected }) {
+export default function Row({ isSelected, column }) {
   let s = '';
   if (isSelected) {
     s = 'bg-danger';
