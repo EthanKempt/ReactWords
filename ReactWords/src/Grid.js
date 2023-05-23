@@ -3,11 +3,13 @@ import Row from './Row';
 
 export default function Grid() {
   useEffect(() => {
-    const doSomething = () => { alert('a') };
-    window.addEventListener('click', doSomething);
+    const doSomething = (event) => {
+      alert(event.key);
+    };
+    window.addEventListener('keyup', doSomething);
 
     return () => {
-      window.removeEventListener('click', doSomething);
+      window.removeEventListener('keyup', doSomething);
     }
   });
 
