@@ -3,7 +3,7 @@ import Row from './Row';
 
 export default function Grid() {
   useEffect(() => {
-    const doSomething = (event) => {
+    const handleKeyUp = (event) => {
       const key = event.key;
       const size = key.length;
 
@@ -12,12 +12,10 @@ export default function Grid() {
         alert(upper);
       }
     };
-    window.addEventListener('keyup', doSomething);
-
-
+    window.addEventListener('keyup', handleKeyUp);
 
     return () => {
-      window.removeEventListener('keyup', doSomething);
+      window.removeEventListener('keyup', handleKeyUp);
     }
   });
 
