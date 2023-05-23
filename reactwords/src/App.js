@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
+import Grid from './Grid';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
+    <div>
+
+      <Grid />
     </div>
   );
 }
-
-export default App;
