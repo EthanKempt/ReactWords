@@ -21,16 +21,16 @@ export default function Grid() {
     }
   });
 
-  const [row, setRow] = useState(1);
-  const [column, setColumn] = useState(1);
+  const [row, setRow] = useState(2);
+  const [column, setColumn] = useState(2);
   return (
     <div>
-      <Row id='1' isSelected={row == 1} column={column} />
-      <Row id='2' isSelected={row == 2} />
-      <Row id='3' isSelected={row == 3} />
-      <Row id='4' isSelected={row == 4} />
-      <Row id='5' isSelected={row == 5} />
-      <Row id='6' isSelected={row == 6} />
+      <Row id='1' isRowSelected={row == 1} column={column} />
+      <Row id='2' isRowSelected={row == 2} column={column} />
+      <Row id='3' isRowSelected={row == 3} column={column} />
+      <Row id='4' isRowSelected={row == 4} column={column} />
+      <Row id='5' isRowSelected={row == 5} column={column} />
+      <Row id='6' isRowSelected={row == 6} column={column} />
     </div>
   );
 }
