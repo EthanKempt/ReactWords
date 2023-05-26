@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Row from './Row';
 
-export default function Grid() {
+export default function Grid({ column, row }) {
   useEffect(() => {
     const handleKeyUp = (event) => {
       const key = event.key;
@@ -9,7 +9,6 @@ export default function Grid() {
 
       if (size == 1 && key.match(/[A-z]/)) {
         var upper = key.toUpperCase();
-        alert(upper);
       }
     };
     window.addEventListener('keyup', handleKeyUp);
@@ -19,8 +18,6 @@ export default function Grid() {
     }
   });
 
-  const [row, setRow] = useState(2);
-  const [column, setColumn] = useState(2);
   return (
     <div>
       <Row id='1' isRowSelected={row == 1} column={column} />

@@ -1,13 +1,17 @@
 import './App.css';
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import React, { useEffect, useState } from "react";
 import Grid from './Grid';
+import Navbar from './Navbar';
+import { useState, useEffect } from 'react';
 
 export default function App() {
-  return (
-    <div>
+  const [column, setColumn] = useState(1);
+  const [row, setRow] = useState(1);
 
-      <Grid />
-    </div>
+  return (
+    <>
+      <Navbar column={column} setRow={setRow} setColumn={setColumn} row={row} />
+      <Grid column={column} row={row} />
+    </>
   );
 }
