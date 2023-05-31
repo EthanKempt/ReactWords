@@ -16,6 +16,10 @@ export default function Grid() {
         var upper = key.toUpperCase();
         move1(upper);
       }
+
+      if (key === 'backspace') {
+        move1(upper);
+      }
     };
     window.addEventListener('keyup', handleKeyUp);
 
@@ -25,7 +29,15 @@ export default function Grid() {
   });
 
   function move1(upper) {
-    setColumn(column + 1)
+    if (column <= 4) {
+      setColumn(column + 1)
+    }
+  }
+
+  function backspace() {
+    if (column >= 1) {
+      setColumn(column - 1)
+    }
   }
 
   return (

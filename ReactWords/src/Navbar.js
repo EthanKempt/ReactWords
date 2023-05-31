@@ -26,7 +26,7 @@ export default function Navbar() {
 
   }
   function save() {
-    alert('a');
+
   }
 
   return (

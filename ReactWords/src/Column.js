@@ -6,7 +6,7 @@ export default function Column({ id, rowid }) {
   const [row, setRow] = useAtom(rowAtom);
 
   let s = '';
-  if (column == id && row == rowid ) {
+  if (column == id && row == rowid) {
     s = 'bg-success';
   }
   return (
