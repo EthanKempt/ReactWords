@@ -1,17 +1,13 @@
 import Column from './Column';
 
-export default function Row({ isRowSelected, column }) {
-  let s = '';
-  if (isRowSelected) {
-    s = 'bg-danger';
-  }
+export default function Row({ id }) {
   return (
-    <div className={s}>
-      <Column isSelected={column == 1 && isRowSelected} />
-      <Column isSelected={column == 2 && isRowSelected} />
-      <Column isSelected={column == 3 && isRowSelected} />
-      <Column isSelected={column == 4 && isRowSelected} />
-      <Column isSelected={column == 5 && isRowSelected} />
+    <div>
+      <Column id='1' rowid={id} />
+      <Column id='2' rowid={id} />
+      <Column id='3' rowid={id} />
+      <Column id='4' rowid={id} />
+      <Column id='5' rowid={id} />
     </div>
   );
 }

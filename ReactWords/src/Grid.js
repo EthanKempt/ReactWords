@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Row from './Row';
+import { useAtom } from 'jotai'
+import { columnAtom, rowAtom } from "./App";
 
-export default function Grid({ column, row }) {
+export default function Grid() {
+  const [column, setColumn] = useAtom(columnAtom);
+  const [row, setRow] = useAtom(rowAtom);
+
   useEffect(() => {
     const handleKeyUp = (event) => {
       const key = event.key;
@@ -9,6 +14,7 @@ export default function Grid({ column, row }) {
 
       if (size == 1 && key.match(/[A-z]/)) {
         var upper = key.toUpperCase();
+        move1(upper);
       }
     };
     window.addEventListener('keyup', handleKeyUp);
@@ -18,14 +24,18 @@ export default function Grid({ column, row }) {
     }
   });
 
+  function move1(upper) {
+    setColumn(column + 1)
+  }
+
   return (
     <div>
-      <Row id='1' isRowSelected={row == 1} column={column} />
-      <Row id='2' isRowSelected={row == 2} column={column} />
-      <Row id='3' isRowSelected={row == 3} column={column} />
-      <Row id='4' isRowSelected={row == 4} column={column} />
-      <Row id='5' isRowSelected={row == 5} column={column} />
-      <Row id='6' isRowSelected={row == 6} column={column} />
+      <Row id='1' />
+      <Row id='2' />
+      <Row id='3' />
+      <Row id='4' />
+      <Row id='5' />
+      <Row id='6' />
     </div>
   );
 }
