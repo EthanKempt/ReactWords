@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
+import bootstrap from "bootstrap/dist/js/bootstrap.min.js";
 
 
 export default function Navbar({ column, setColumn, row, setRow}) {
@@ -17,26 +18,14 @@ export default function Navbar({ column, setColumn, row, setRow}) {
   }
 
   function myFunc2() {
-    const container = document.getElementById('root');
-    const root = ReactDOM.createRoot(container);
-    root.render(settingsPage);
+
+  }
+  function save() {
+    alert('a');
   }
 
-  const settingsPage = (
-    <table>
-      <tr>
-        <th>Settings:</th>
-      </tr>
-      <tr>
-        <td>Setting 1</td>
-      </tr>
-      <tr>
-        <td>Setting 2</td>
-      </tr>
-    </table>
-    );
-
   return (
+    <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">Navbar</a>
@@ -48,10 +37,32 @@ export default function Navbar({ column, setColumn, row, setRow}) {
             <a className="nav-link active" aria-current="page" href="#">Home</a>
             <a className="nav-link" href="#">Features</a>
             <button class="btn btn-outline-success me-2" onClick={myFunc} type="button">Move Selected</button>
-            <button class="btn btn-sm btn-outline-secondary" onClick={myFunc2} type="button">Settings</button>
-          </div>
+              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Settings</button></div>
         </div>
       </div>
     </nav>
+
+
+
+      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              ...
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={save}>Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </>
   );
 }
