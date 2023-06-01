@@ -1,7 +1,9 @@
 import { columnAtom, rowAtom } from "./App";
 import { useAtom } from 'jotai'
+import { useEffect } from 'react';
 
-export default function Column({ id, rowid }) {
+
+export default function Column({ id, rowid, letter }) {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
 
@@ -9,9 +11,10 @@ export default function Column({ id, rowid }) {
   if (column == id && row == rowid) {
     s = 'bg-success';
   }
+
   return (
     <span className={s}>
-      <input maxLength='1' type='text' className='box' disabled />
+      <input value={letter} maxLength='1' type='text' className='box' disabled />
     </span>
   );
 }
