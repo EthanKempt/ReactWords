@@ -1,12 +1,13 @@
-import { columnAtom, rowAtom } from "./App";
+import { columnAtom, gridAtom, rowAtom } from "./App";
 import { useAtom } from 'jotai'
 import { useEffect } from 'react';
 
-
-export default function Column({ id, rowid, letter }) {
+export default function Column({ id, rowid }) {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
+  const [grid, setGrid] = useAtom(gridAtom);
 
+  const letter = grid[rowid - 1][id - 1];
   let s = '';
   if (column == id && row == rowid) {
     s = 'bg-success';

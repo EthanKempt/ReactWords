@@ -7,11 +7,16 @@ import { atom, useAtom } from 'jotai'
 
 export const columnAtom = atom(1);
 export const rowAtom = atom(1);
-export const letterAtom = atom('');
+export const gridAtom = atom([
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', '']
+]);
 
 export default function App() {
-  const [column, setColumn] = useAtom(columnAtom);
-  const [row, setRow] = useAtom(rowAtom);
 
   return (
     <>

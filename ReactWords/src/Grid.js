@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import Row from './Row';
 import { useAtom } from 'jotai'
-import { columnAtom, rowAtom, letterAtom } from "./App";
+import { columnAtom, rowAtom, gridAtom } from "./App";
 
 export default function Grid() {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
-  const [letter, setLetter] = useAtom(letterAtom)
+  const [grid, setGrid] = useAtom(gridAtom)
 
   useEffect(() => {
     const handleKeyUp = (event) => {
@@ -18,10 +18,10 @@ export default function Grid() {
       } else if (key === 'Enter') {
         enter();
       } else {
-        if (size == 1 && key.match(/[A-z]/) && column < 6) {
+        if (size == 1 && key.match(/[A-Z|a-z]/) && column < 6) {
           var upper = key.toUpperCase();
-          setLetter(upper);
-          setColumn(column + 1)
+          type(upper);
+          setColumn(column + 1);
         }
       }
     };
@@ -31,6 +31,12 @@ export default function Grid() {
       window.removeEventListener('keyup', handleKeyUp);
     }
   });
+
+  function type(upper) {
+    let g = grid;
+    g[row - 1][column - 1] = upper;
+    setGrid(g);
+  }
 
   function backspace() {
     if (column > 1) {
