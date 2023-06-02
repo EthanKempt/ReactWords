@@ -15,6 +15,14 @@ export const gridAtom = atom([
   ['', '', '', '', ''],
   ['', '', '', '', '']
 ]);
+export const correctAtom = atom([
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false]
+]);
 
 export default function App() {
 
