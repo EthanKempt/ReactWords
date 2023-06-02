@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import Row from './Row';
 import { useAtom } from 'jotai'
-import { columnAtom, rowAtom, gridAtom } from "./App";
+import { columnAtom, rowAtom, gridAtom, wordAtom } from "./App";
 
 export default function Grid() {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
   const [grid, setGrid] = useAtom(gridAtom)
+  const [word, setWord] = useAtom(wordAtom)
 
   useEffect(() => {
     const handleKeyUp = (event) => {
@@ -51,6 +52,14 @@ export default function Grid() {
     if (column == 6) {
       setRow(row + 1);
       setColumn(1);
+      //grid[row - 1]
+      var answer = word[0] + word[1] + word[2] + word[3] + word[4] + word[5];
+      var guessArray = grid[row - 1]
+      var guess = guessArray[0] + guessArray[1] + guessArray[2] + guessArray[3] + guessArray[4] + guessArray[5];
+
+      if (answer == guess) {
+        alert('great job');
+      }
     }
   }
 
