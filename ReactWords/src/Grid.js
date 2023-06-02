@@ -40,6 +40,9 @@ export default function Grid() {
 
   function backspace() {
     if (column > 1) {
+      let g = grid;
+      g[row - 1][column - 2] = '';
+      setGrid(g);
       setColumn(column - 1);
     }
   }
