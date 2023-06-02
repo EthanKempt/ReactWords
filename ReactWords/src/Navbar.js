@@ -21,10 +21,6 @@ export default function Navbar() {
       setRow(1)
     }
   }
-
-  function myFunc2() {
-
-  }
   function save() {
 
   }
@@ -41,7 +37,6 @@ export default function Navbar() {
             <div className="navbar-nav">
               <a className="nav-link active" aria-current="page" href="#">Home</a>
               <a className="nav-link" href="#">Features</a>
-              <button className="btn btn-outline-success me-2" onClick={myFunc} type="button">Move Selected</button>
               <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Settings</button></div>
           </div>
