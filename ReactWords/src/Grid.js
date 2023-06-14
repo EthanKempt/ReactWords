@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react';
 import Row from './Row';
 import { useAtom } from 'jotai'
-import { columnAtom, rowAtom, gridAtom, wordAtom, backColorAtom, correctAtom } from "./App";
+import { columnAtom, rowAtom, gridAtom, wordAtom, correctAtom, solvedAtom } from "./App";
 
 export default function Grid() {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
   const [grid, setGrid] = useAtom(gridAtom)
   const [word, setWord] = useAtom(wordAtom)
-  const [backColor, setBackColor] = useAtom(backColorAtom);
   const [correct, setCorrect] = useAtom(correctAtom);
+  const [solved, setSolved] = useAtom(solvedAtom);
+
 
   useEffect(() => {
     const handleKeyUp = (event) => {
       const key = event.key;
       const size = key.length;
-
-      if (key === 'Backspace') {
-        backspace();
-      } else if (key === 'Enter') {
-        enter();
-      } else {
-        if (size == 1 && key.match(/[A-Z|a-z]/) && column < 6) {
-          var upper = key.toUpperCase();
-          type(upper);
-          setColumn(column + 1);
+      if (row < 7 && solved == false) {
+        if (key === 'Backspace') {
+          backspace();
+        } else if (key === 'Enter') {
+          enter();
+        } else {
+          if (size == 1 && key.match(/[A-Z|a-z]/) && column < 6) {
+            var upper = key.toUpperCase();
+            type(upper);
+            setColumn(column + 1);
+          }
         }
       }
     };
@@ -58,14 +60,19 @@ export default function Grid() {
       var guessArray = grid[row - 1];
       var guess = guessArray[0] + guessArray[1] + guessArray[2] + guessArray[3] + guessArray[4] + guessArray[5];
       const c = correct;
+      var x = 0;
       for (let i = 0; i < guessArray.length; i++) {
         const item = guessArray[i];
         const itemAnswer = answer[i];
         if (item == itemAnswer) {
           c[row - 1][i] = true;
+          x++;
         }
       }
       setCorrect(c);
+      if (x == 5) {
+        setSolved(true);
+      }
     }
   }
 

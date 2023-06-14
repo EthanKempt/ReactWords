@@ -8,14 +8,7 @@ import { atom, useAtom } from 'jotai'
 export const columnAtom = atom(1);
 export const rowAtom = atom(1);
 export const wordAtom = atom(['R', 'A', 'D', 'I', 'O']);
-export const backColorAtom = atom([
-  ['white', 'white', 'white', 'white', 'white'],
-  ['white', 'white', 'white', 'white', 'white'],
-  ['white', 'white', 'white', 'white', 'white'],
-  ['white', 'white', 'white', 'white', 'white'],
-  ['white', 'white', 'white', 'white', 'white'],
-  ['white', 'white', 'white', 'white', 'white']
-]);
+export const solvedAtom = atom(false);
 
 export const gridAtom = atom([
   ['', '', '', '', ''],
@@ -26,7 +19,7 @@ export const gridAtom = atom([
   ['', '', '', '', '']
 ]);
 export const correctAtom = atom([
-  [false, false, false, false, false],
+  ['white', false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
