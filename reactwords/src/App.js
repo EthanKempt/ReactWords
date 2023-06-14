@@ -18,8 +18,9 @@ export const gridAtom = atom([
   ['', '', '', '', ''],
   ['', '', '', '', '']
 ]);
+
 export const correctAtom = atom([
-  ['white', false, false, false, false],
+  [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],

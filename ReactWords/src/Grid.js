@@ -64,9 +64,14 @@ export default function Grid() {
       for (let i = 0; i < guessArray.length; i++) {
         const item = guessArray[i];
         const itemAnswer = answer[i];
+
         if (item == itemAnswer) {
-          c[row - 1][i] = true;
+          c[row - 1][i] = 'green';
           x++;
+        } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4]) {
+          c[row - 1][i] = 'yellow';
+        } else {
+          c[row - 1][i] = 'grey';
         }
       }
       setCorrect(c);
