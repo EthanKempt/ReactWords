@@ -57,14 +57,15 @@ export default function Grid() {
       var answer = word[0] + word[1] + word[2] + word[3] + word[4] + word[5];
       var guessArray = grid[row - 1];
       var guess = guessArray[0] + guessArray[1] + guessArray[2] + guessArray[3] + guessArray[4] + guessArray[5];
-
+      const c = correct;
       for (let i = 0; i < guessArray.length; i++) {
         const item = guessArray[i];
         const itemAnswer = answer[i];
         if (item == itemAnswer) {
-          correct[row - 1][column - 1] = true;
+          c[row - 1][i] = true;
         }
       }
+      setCorrect(c);
     }
   }
 
