@@ -28,7 +28,7 @@ export default function Column({ id, rowid }) {
   }
 
   if (f == true) {
-    classes += ' flip';
+    classes += ` flip${id}` ;
   }
 
   return (

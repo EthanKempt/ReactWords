@@ -12,6 +12,7 @@ export default function Grid() {
   const [correct, setCorrect] = useAtom(correctAtom);
   const [solved, setSolved] = useAtom(solvedAtom);
   const [flipping, setFlipping] = useAtom(flippingAtom);
+  const [dave, setDave] = useState(0);
 
   useEffect(() => {
     const handleKeyUp = (event) => {
@@ -65,7 +66,7 @@ export default function Grid() {
       var x = 0;
       let i = 0;
 
-      const interval = setInterval(() => {
+      for (i = 0; i < 6; i++) {
         const item = guessArray[i];
         const itemAnswer = answer[i];
         f[row - 1][i] = true;
@@ -79,15 +80,11 @@ export default function Grid() {
         } else {
           c[row - 1][i] = 'grey';
         }
-        if (i == 5) {
-          clearInterval(interval);
-        }
         setCorrect(c);
         if (x == 5) {
           setSolved(true);
         }
-        i++;
-      }, 1000);
+      }
     }
   }
 
