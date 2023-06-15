@@ -9,6 +9,14 @@ export const columnAtom = atom(1);
 export const rowAtom = atom(1);
 export const wordAtom = atom(['R', 'A', 'D', 'I', 'O']);
 export const solvedAtom = atom(false);
+export const flippingAtom = atom([
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false],
+  [false, false, false, false, false]
+]);
 
 export const gridAtom = atom([
   ['', '', '', '', ''],

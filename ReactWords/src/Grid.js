@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Row from './Row';
 import { useAtom } from 'jotai'
-import { columnAtom, rowAtom, gridAtom, wordAtom, correctAtom, solvedAtom } from "./App";
+import { columnAtom, rowAtom, gridAtom, wordAtom, correctAtom, solvedAtom, flippingAtom } from "./App";
 
 export default function Grid() {
   const [column, setColumn] = useAtom(columnAtom);
@@ -10,7 +10,7 @@ export default function Grid() {
   const [word, setWord] = useAtom(wordAtom)
   const [correct, setCorrect] = useAtom(correctAtom);
   const [solved, setSolved] = useAtom(solvedAtom);
-
+  const [flipping, setFlipping] = useAtom(flippingAtom);
 
   useEffect(() => {
     const handleKeyUp = (event) => {
@@ -60,25 +60,40 @@ export default function Grid() {
       var guessArray = grid[row - 1];
       var guess = guessArray[0] + guessArray[1] + guessArray[2] + guessArray[3] + guessArray[4] + guessArray[5];
       const c = correct;
+      const f = flipping;
       var x = 0;
-      for (let i = 0; i < guessArray.length; i++) {
+      let i = 0;
+
+      setInterval(() => {
+        check();
+      }, 1000);
+
         const item = guessArray[i];
         const itemAnswer = answer[i];
+        f[row - 1][i] = true;
+        setFlipping(f);
 
-        if (item == itemAnswer) {
-          c[row - 1][i] = 'green';
-          x++;
-        } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4]) {
-          c[row - 1][i] = 'yellow';
-        } else {
-          c[row - 1][i] = 'grey';
-        }
-      }
       setCorrect(c);
       if (x == 5) {
         setSolved(true);
       }
     }
+  }
+
+  function check() {
+
+    if (item == itemAnswer) {
+      c[row - 1][i] = 'green';
+      x++;
+    } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4]) {
+      c[row - 1][i] = 'yellow';
+    } else {
+      c[row - 1][i] = 'grey';
+    }
+    if (i == 5) {
+      return () => clearInterval(interval);
+    }
+
   }
 
   return (
