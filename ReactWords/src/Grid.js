@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import Row from './Row';
 import { useAtom } from 'jotai'
 import { columnAtom, rowAtom, gridAtom, wordAtom, correctAtom, solvedAtom, flippingAtom } from "./App";
+import Column from './Column';
 
 export default function Grid() {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
-  const [grid, setGrid] = useAtom(gridAtom)
-  const [word, setWord] = useAtom(wordAtom)
+  const [grid, setGrid] = useAtom(gridAtom);
+  const [word, setWord] = useAtom(wordAtom);
   const [correct, setCorrect] = useAtom(correctAtom);
   const [solved, setSolved] = useAtom(solvedAtom);
   const [flipping, setFlipping] = useAtom(flippingAtom);
@@ -64,36 +65,30 @@ export default function Grid() {
       var x = 0;
       let i = 0;
 
-      setInterval(() => {
-        check();
-      }, 1000);
-
+      const interval = setInterval(() => {
         const item = guessArray[i];
         const itemAnswer = answer[i];
         f[row - 1][i] = true;
         setFlipping(f);
 
-      setCorrect(c);
-      if (x == 5) {
-        setSolved(true);
-      }
+        if (item == itemAnswer) {
+          c[row - 1][i] = 'green';
+          x++;
+        } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4]) {
+          c[row - 1][i] = 'yellow';
+        } else {
+          c[row - 1][i] = 'grey';
+        }
+        if (i == 5) {
+          clearInterval(interval);
+        }
+        setCorrect(c);
+        if (x == 5) {
+          setSolved(true);
+        }
+        i++;
+      }, 1000);
     }
-  }
-
-  function check() {
-
-    if (item == itemAnswer) {
-      c[row - 1][i] = 'green';
-      x++;
-    } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4]) {
-      c[row - 1][i] = 'yellow';
-    } else {
-      c[row - 1][i] = 'grey';
-    }
-    if (i == 5) {
-      return () => clearInterval(interval);
-    }
-
   }
 
   return (
