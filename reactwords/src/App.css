@@ -21,10 +21,10 @@ nav {
   border: 2px solid black;
 }
 
-@keyframes flipping {
+/*@keyframes flipping {
   20% {rotate: x 90deg;}
 }
-
+*/
 @keyframes flippingGreen {
   20% {
     rotate: x 90deg;    
@@ -54,7 +54,7 @@ nav {
   }
 }
 
-.flip1 {
+/*.flip1 {
   animation-name: flipping;
   animation-duration: 1s;
   animation-delay: 0s;
@@ -83,7 +83,7 @@ nav {
   animation-duration: 1s;
   animation-delay: 2s;
 }
-
+*/
 .flipGreen1 {
   animation-name: flippingGreen;
   -webkit-animation-fill-mode: forwards;
