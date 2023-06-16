@@ -20,16 +20,21 @@ export default function Column({ id, rowid }) {
     classes += ' underline-me';
   }
   if (c == 'green') {
-    color = 'green';
+    if (f == true) {
+      classes += ` flipGreen${id}`;
+    }
   } else if (c == 'yellow') {
-    color = 'yellow';
-  } else if (c == 'grey') {
-    color = 'gray';
+    if (f == true) {
+      classes += ` flipYellow${id}`;
+    }  } else if (c == 'grey') {
+    if (f == true) {
+      classes += ` flipGrey${id}`;
+    }
   }
 
-  if (f == true) {
-    classes += ` flip${id}` ;
-  }
+  //if (f == true) {
+  //  classes += ` flip${id}` ;
+  //}
 
   return (
     <span>

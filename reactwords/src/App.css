@@ -25,6 +25,35 @@ nav {
   20% {rotate: x 90deg;}
 }
 
+@keyframes flippingGreen {
+  20% {
+    rotate: x 90deg;    
+  }
+  100% {
+    background-color: green;
+  }
+}
+
+@keyframes flippingGrey {
+  20% {
+    rotate: x 90deg;
+  }
+
+  100% {
+    background-color: grey;
+  }
+}
+
+@keyframes flippingYellow {
+  20% {
+    rotate: x 90deg;
+  }
+
+  100% {
+    background-color: yellow;
+  }
+}
+
 .flip1 {
   animation-name: flipping;
   animation-duration: 1s;
@@ -51,6 +80,111 @@ nav {
 
 .flip5 {
   animation-name: flipping;
+  animation-duration: 1s;
+  animation-delay: 2s;
+}
+
+.flipGreen1 {
+  animation-name: flippingGreen;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0s;
+}
+
+.flipGreen2 {
+  animation-name: flippingGreen;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+}
+
+.flipGreen3 {
+  animation-name: flippingGreen;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+.flipGreen4 {
+  animation-name: flippingGreen;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+}
+
+.flipGreen5 {
+  animation-name: flippingGreen;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 2s;
+}
+
+.flipGrey1 {
+  animation-name: flippingGrey;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0s;
+}
+
+.flipGrey2 {
+  animation-name: flippingGrey;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+}
+
+.flipGrey3 {
+  animation-name: flippingGrey;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+.flipGrey4 {
+  animation-name: flippingGrey;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+}
+
+.flipGrey5 {
+  animation-name: flippingGrey;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 2s;
+}
+
+.flipYellow1 {
+  animation-name: flippingYellow;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0s;
+}
+
+.flipYellow2 {
+  animation-name: flippingYellow;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+}
+
+.flipYellow3 {
+  animation-name: flippingYellow;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+.flipYellow4 {
+  animation-name: flippingYellow;
+  -webkit-animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+}
+
+.flipYellow5 {
+  animation-name: flippingYellow;
+  -webkit-animation-fill-mode: forwards;
   animation-duration: 1s;
   animation-delay: 2s;
 }
