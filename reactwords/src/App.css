@@ -21,8 +21,17 @@ nav {
   border: 2px solid black;
 }
 
-@keyframes flipping {
+/*@keyframes flipping {
   20% {rotate: x 90deg;}
+}
+*/
+@keyframes flippingGreen {
+  20% {
+    rotate: x 90deg;    
+  }
+  100% {
+    background-color: green;
+  }
 }
 
 .flip {
@@ -31,6 +40,27 @@ nav {
   animation-delay: 0s;
 }
 
-.title {
-  font-size: 50px;
+.flip2{
+  animation-name: flipping;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
 }
+
+.flip3 {
+  animation-name: flipping;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+.flip4 {
+  animation-name: flipping;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+}
+
+.flip5 {
+  animation-name: flipping;
+  animation-duration: 1s;
+  animation-delay: 2s;
+}
+
