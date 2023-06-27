@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Row from './Row';
 import { useAtom } from 'jotai'
-import { columnAtom, rowAtom, gridAtom, wordAtom, correctAtom, solvedAtom, flippingAtom } from "./App";
+import { columnAtom, rowAtom, gridAtom, wordAtom, correctAtom, solvedAtom, flippingAtom, letterCountAtom, guessCountAtom } from "./App";
 import Column from './Column';
 
 export default function Grid() {
@@ -12,7 +12,8 @@ export default function Grid() {
   const [correct, setCorrect] = useAtom(correctAtom);
   const [solved, setSolved] = useAtom(solvedAtom);
   const [flipping, setFlipping] = useAtom(flippingAtom);
-  const [dave, setDave] = useState(0);
+  const [letterCount, setLetterCount] = useAtom(letterCountAtom);
+  const [guessCount, setGuessCount] = useAtom(guessCountAtom);
 
   useEffect(() => {
     const handleKeyUp = (event) => {
@@ -24,7 +25,7 @@ export default function Grid() {
         } else if (key === 'Enter') {
           enter();
         } else {
-          if (size == 1 && key.match(/[A-Z|a-z]/) && column < 6) {
+          if (size == 1 && key.match(/[A-Z|a-z]/) && column < letterCount + 1) {
             var upper = key.toUpperCase();
             type(upper);
             setColumn(column + 1);
@@ -55,47 +56,100 @@ export default function Grid() {
   }
 
   function enter() {
-    if (column == 6) {
+    if (column == letterCount + 1) {
       setRow(row + 1);
       setColumn(1);
-      var answer = word[0] + word[1] + word[2] + word[3] + word[4] + word[5];
+      var answer = word[0]
+      for (let i = 1; i < letterCount; i++) {
+        answer += word[i];
+      }
       var guessArray = grid[row - 1];
-      var guess = guessArray[0] + guessArray[1] + guessArray[2] + guessArray[3] + guessArray[4] + guessArray[5];
+      var guess = guessArray[0];
+      for (let i = 1; i < letterCount; i++) {
+        guess += guessArray[i];
+      }
       const c = correct;
-      const f = flipping;
       var x = 0;
       let i = 0;
 
-      for (i = 0; i < 6; i++) {
+      for (i = 0; i < letterCount + 1; i++) {
         const item = guessArray[i];
         const itemAnswer = answer[i];
-        f[row - 1][i] = true;
-        setFlipping(f);
-
         if (item == itemAnswer) {
           c[row - 1][i] = 'green';
           x++;
-        } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4]) {
+        } else if (item == answer[0] || item == answer[1] || item == answer[2] || item == answer[3] || item == answer[4] || item == answer[5]) {
           c[row - 1][i] = 'yellow';
         } else {
           c[row - 1][i] = 'grey';
         }
-        setCorrect(c);
-        if (x == 5) {
-          setSolved(true);
-        }
+      }
+      alert(letterCount);
+      alert(x);
+      if (x == letterCount + 1) {
+        setColumn(undefined);
+        alert('good job');
       }
     }
   }
 
-  return (
-    <div>
-      <Row id='1' />
-      <Row id='2' />
-      <Row id='3' />
-      <Row id='4' />
-      <Row id='5' />
-      <Row id='6' />
-    </div>
-  );
+  if (guessCount == 5) {
+    return (
+      <>
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="col">
+              <div className='title'>Words</div>
+              <Row id='1' />
+              <Row id='2' />
+              <Row id='3' />
+              <Row id='4' />
+              <Row id='5' />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (guessCount == 6) {
+    return (
+      <>
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="col">
+              <div className='title'>Words</div>
+              <Row id='1' />
+              <Row id='2' />
+              <Row id='3' />
+              <Row id='4' />
+              <Row id='5' />
+              <Row id='6' />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (guessCount == 7) {
+    return (
+      <>
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="col">
+              <div className='title'>Words</div>
+              <Row id='1' />
+              <Row id='2' />
+              <Row id='3' />
+              <Row id='4' />
+              <Row id='5' />
+              <Row id='6' />
+              <Row id='7' />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }

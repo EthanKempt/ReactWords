@@ -1,3 +1,8 @@
+:root {
+  --green: #1e90ff;
+  --white: #ffffff;
+}
+
 .box {
   margin: 10px;
   border: 2px solid rgba(122, 122, 122, 0.45);
@@ -7,11 +12,6 @@
   width: 50px;
   height: 50px;
 }
-
-/*.flip {
-  animation-name: flipping;
-  animation-duration: 1s;
-}*/
 
 nav {
   border-bottom: 1px;
@@ -25,33 +25,12 @@ nav {
   20% {rotate: x 90deg;}
 }
 
-.flip1 {
+.flip {
   animation-name: flipping;
   animation-duration: 1s;
   animation-delay: 0s;
 }
 
-.flip2{
-  animation-name: flipping;
-  animation-duration: 1s;
-  animation-delay: 0.5s;
+.title {
+  font-size: 50px;
 }
-
-.flip3 {
-  animation-name: flipping;
-  animation-duration: 1s;
-  animation-delay: 1s;
-}
-
-.flip4 {
-  animation-name: flipping;
-  animation-duration: 1s;
-  animation-delay: 1.5s;
-}
-
-.flip5 {
-  animation-name: flipping;
-  animation-duration: 1s;
-  animation-delay: 2s;
-}
-

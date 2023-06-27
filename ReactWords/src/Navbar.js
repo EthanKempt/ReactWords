@@ -1,28 +1,47 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import bootstrap from "bootstrap/dist/js/bootstrap.min.js";
-import { columnAtom, rowAtom } from "./App";
+import { columnAtom, rowAtom, letterCountAtom, modalCountAtom, guessCountAtom, modalGuessAtom } from "./App";
 import { useAtom } from 'jotai'
 
 export default function Navbar() {
   const [column, setColumn] = useAtom(columnAtom);
   const [row, setRow] = useAtom(rowAtom);
+  const [letterCount, setLetterCount] = useAtom(letterCountAtom);
+  const [modalCount, setModalCount] = useAtom(modalCountAtom);
+  const [guessCount, setGuessCount] = useAtom(guessCountAtom);
+  const [modalGuess, setModalGuess] = useAtom(modalGuessAtom);
 
-  function myFunc() {
-    if (column < 5) {
-      setColumn(column + 1)
-    }
-    else if (row <= 5) {
-      setRow(row + 1)
-      setColumn(1)
-    }
-    else {
-      setColumn(1)
-      setRow(1)
+  function addLetter() {
+    if (modalCount < 6) {
+      setModalCount(modalCount + 1);
     }
   }
-  function save() {
+  function subLetter() {
+    if (modalCount > 4) {
+      setModalCount(modalCount - 1);
+    }
+  }
 
+  function addGuess() {
+    if (modalGuess < 7) {
+      setModalGuess(modalGuess + 1);
+    }
+  }
+  function subGuess() {
+    if (modalGuess > 5) {
+      setModalGuess(modalGuess - 1);
+    }
+  }
+
+  function save() {
+    setLetterCount(modalCount);
+    setGuessCount(modalGuess);
+  }
+
+  function cancel() {
+    setModalGuess(guessCount);
+    setModalCount(letterCount);
   }
 
   return (
@@ -52,11 +71,23 @@ export default function Navbar() {
               <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div className="modal-body">
-              ...
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" onClick={subLetter} type="button">-</button>
+                <button class="btn btn-outline-secondary" onClick={addLetter} type="button">+</button>
+                <input type="text" disabled class="form-control" placeholder={modalCount} aria-label="Example text with two button addons" />
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" onClick={subGuess} type="button">-</button>
+                <button class="btn btn-outline-secondary" onClick={addGuess} type="button">+</button>
+                <input type="text" disabled class="form-control" placeholder={modalGuess} aria-label="Example text with two button addons" />
+              </div>
+
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={cancel}>Cancel</button>
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={save}>Save changes</button>
             </div>
           </div>

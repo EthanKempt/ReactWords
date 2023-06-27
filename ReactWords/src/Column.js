@@ -1,4 +1,4 @@
-import { columnAtom, correctAtom, gridAtom, rowAtom, solvedAtom, flippingAtom } from "./App";
+import { columnAtom, correctAtom, gridAtom, rowAtom, solvedAtom, flippingAtom, letterCountAtom } from "./App";
 import { useAtom } from 'jotai'
 import { useEffect } from 'react';
 
@@ -9,6 +9,7 @@ export default function Column({ id, rowid }) {
   const [correct, setCorrect] = useAtom(correctAtom);
   const [solved, setSolved] = useAtom(solvedAtom);
   const [flipping, setFlipping] = useAtom(flippingAtom);
+  const [letterCount, setLetterCount] = useAtom(letterCountAtom);
 
   const letter = grid[rowid - 1][id - 1];
   const c = correct[rowid - 1][id - 1];
@@ -28,7 +29,7 @@ export default function Column({ id, rowid }) {
   }
 
   if (f == true) {
-    classes += ` flip${id}` ;
+    classes += ' flip';
   }
 
   return (
