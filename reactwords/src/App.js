@@ -23,14 +23,12 @@ export const flippingAtom = atom([
   [false, false, false, false, false]
 ]);
 
-export const gridAtom = atom([
-  ['', '', '', '', ''],
-  ['', '', '', '', ''],
-  ['', '', '', '', ''],
-  ['', '', '', '', ''],
-  ['', '', '', '', ''],
-  ['', '', '', '', '']
-]);
+let a = [];
+r = [''];
+
+for (let i = 0; i < letterCount; i++) {
+
+}
 
 export const correctAtom = atom([
   [false, false, false, false, false],
