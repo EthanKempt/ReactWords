@@ -72,7 +72,7 @@ export default function Grid() {
       var x = 0;
       let i = 0;
 
-      for (i = 0; i < letterCount + 1; i++) {
+      for (i = 0; i < letterCount; i++) {
         const item = guessArray[i];
         const itemAnswer = answer[i];
         if (item == itemAnswer) {
@@ -86,7 +86,7 @@ export default function Grid() {
       }
       alert(letterCount);
       alert(x);
-      if (x == letterCount + 1) {
+      if (x == letterCount) {
         setColumn(undefined);
         alert('good job');
       }
