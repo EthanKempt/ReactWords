@@ -1,4 +1,4 @@
-import { columnAtom, correctAtom, gridAtom, rowAtom, solvedAtom, flippingAtom } from "./App";
+import { columnAtom, correctAtom, gridAtom, rowAtom, solvedAtom, flippingAtom, letterCountAtom } from "./App";
 import { useAtom } from 'jotai'
 import { useEffect } from 'react';
 
@@ -9,6 +9,7 @@ export default function Column({ id, rowid }) {
   const [correct, setCorrect] = useAtom(correctAtom);
   const [solved, setSolved] = useAtom(solvedAtom);
   const [flipping, setFlipping] = useAtom(flippingAtom);
+  const [letterCount, setLetterCount] = useAtom(letterCountAtom);
 
   const letter = grid[rowid - 1][id - 1];
   const c = correct[rowid - 1][id - 1];
@@ -20,21 +21,16 @@ export default function Column({ id, rowid }) {
     classes += ' underline-me';
   }
   if (c == 'green') {
-    if (f == true) {
-      classes += ` flipGreen${id}`;
-    }
+    color = 'green';
   } else if (c == 'yellow') {
-    if (f == true) {
-      classes += ` flipYellow${id}`;
-    }  } else if (c == 'grey') {
-    if (f == true) {
-      classes += ` flipGrey${id}`;
-    }
+    color = 'yellow';
+  } else if (c == 'grey') {
+    color = 'gray';
   }
 
-  //if (f == true) {
-  //  classes += ` flip${id}` ;
-  //}
+  if (f == true) {
+    classes += ' flip';
+  }
 
   return (
     <span>
