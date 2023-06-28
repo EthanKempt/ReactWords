@@ -36,17 +36,17 @@ export default function Navbar() {
   }
 
   function updateGrid() {
-    let a = [];
-    var r = '';
-    for (let i = 0; i < modalCount; i++) {
-      a.push(r);
-    }
+    const r = '';
     let b = [];
     for (let x = 0; x < modalGuess; x++) {
+      let a = [];
+      for (let i = 0; i < modalCount; i++) {
+        a.push(r);
+      }
       b.push(a);
-      setGrid(b);
-      console.log(grid);
     }
+    setGrid(b);
+    console.log(grid);
   }
 
   function save() {
