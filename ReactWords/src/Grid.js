@@ -96,9 +96,9 @@ export default function Grid() {
   if (guessCount == 5) {
     return (
       <>
-        <div class="container text-center">
-          <div class="row align-items-start">
-            <div class="col">
+        <div className="container text-center">
+          <div className="row align-items-start">
+            <div className="col">
               <div className='title'>Words</div>
               <Row id='1' />
               <Row id='2' />
@@ -115,9 +115,9 @@ export default function Grid() {
   if (guessCount == 6) {
     return (
       <>
-        <div class="container text-center">
-          <div class="row align-items-start">
-            <div class="col">
+        <div className="container text-center">
+          <div className="row align-items-start">
+            <div className="col">
               <div className='title'>Words</div>
               <Row id='1' />
               <Row id='2' />
@@ -135,9 +135,9 @@ export default function Grid() {
   if (guessCount == 7) {
     return (
       <>
-        <div class="container text-center">
-          <div class="row align-items-start">
-            <div class="col">
+        <div className="container text-center">
+          <div className="row align-items-start">
+            <div className="col">
               <div className='title'>Words</div>
               <Row id='1' />
               <Row id='2' />
