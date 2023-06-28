@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import bootstrap from "bootstrap/dist/js/bootstrap.min.js";
-import { columnAtom, rowAtom, letterCountAtom, modalCountAtom, guessCountAtom, modalGuessAtom } from "./App";
+import { columnAtom, rowAtom, letterCountAtom, modalCountAtom, guessCountAtom, modalGuessAtom, gridAtom } from "./App";
 import { useAtom } from 'jotai'
 
 export default function Navbar() {
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [modalCount, setModalCount] = useAtom(modalCountAtom);
   const [guessCount, setGuessCount] = useAtom(guessCountAtom);
   const [modalGuess, setModalGuess] = useAtom(modalGuessAtom);
+  const [grid, setGrid] = useAtom(gridAtom);
 
   function addLetter() {
     if (modalCount < 6) {
@@ -34,9 +35,24 @@ export default function Navbar() {
     }
   }
 
+  function updateGrid() {
+    let a = [];
+    var r = '';
+    for (let i = 0; i < modalCount; i++) {
+      a.push(r);
+    }
+    let b = [];
+    for (let x = 0; x < modalGuess; x++) {
+      b.push(a);
+      setGrid(b);
+      console.log(grid);
+    }
+  }
+
   function save() {
     setLetterCount(modalCount);
     setGuessCount(modalGuess);
+    updateGrid();
   }
 
   function cancel() {
@@ -73,17 +89,23 @@ export default function Navbar() {
             </div>
 
             <div className="modal-body">
-              <div class="input-group mb-3">
-                <button class="btn btn-outline-secondary" onClick={subLetter} type="button">-</button>
-                <button class="btn btn-outline-secondary" onClick={addLetter} type="button">+</button>
+
+              Letter Count:
+              <div className="input-group mb-3">
+                <button className="btn btn-outline-secondary" onClick={subLetter} type="button">-</button>
+                <button className="btn btn-outline-secondary" onClick={addLetter} type="button">+</button>
                 <input type="text" disabled class="form-control" placeholder={modalCount} aria-label="Example text with two button addons" />
               </div>
 
+
+              Guess Count:
               <div class="input-group mb-3">
                 <button class="btn btn-outline-secondary" onClick={subGuess} type="button">-</button>
                 <button class="btn btn-outline-secondary" onClick={addGuess} type="button">+</button>
-                <input type="text" disabled class="form-control" placeholder={modalGuess} aria-label="Example text with two button addons" />
+                <input type="text" id='guessCount' disabled class="form-control" placeholder={modalGuess} aria-label="Example text with two button addons" />
               </div>
+
+
 
             </div>
             <div className="modal-footer">

@@ -28,7 +28,6 @@ export default function Grid() {
           if (size == 1 && key.match(/[A-Z|a-z]/) && column < letterCount + 1) {
             var upper = key.toUpperCase();
             type(upper);
-            setColumn(column + 1);
           }
         }
       }
@@ -41,9 +40,12 @@ export default function Grid() {
   });
 
   function type(upper) {
-    let g = grid;
-    g[row - 1][column - 1] = upper;
-    setGrid(g);
+    if (row <= guessCount) {
+      let g = grid;
+      g[row - 1][column - 1] = upper;
+      setGrid(g);
+      setColumn(column + 1);
+    }
   }
 
   function backspace() {

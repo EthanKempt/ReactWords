@@ -5,16 +5,20 @@ import Navbar from './Navbar';
 import { useState, useEffect } from 'react';
 import { atom, useAtom } from 'jotai';
 
+const letterCount = 5;
+const guessCount = 6;
+
 export const columnAtom = atom(1);
 export const rowAtom = atom(1);
 export const wordAtom = atom(['R', 'A', 'D', 'I', 'O', 'X']);
 export const solvedAtom = atom(false);
-export const letterCountAtom = atom(5);
-export const modalCountAtom = atom(5);
-export const guessCountAtom = atom(6);
-export const modalGuessAtom = atom(6);
+export const letterCountAtom = atom(letterCount);
+export const modalCountAtom = atom(letterCount);
+export const guessCountAtom = atom(guessCount);
+export const modalGuessAtom = atom(guessCount);
 
 export const flippingAtom = atom([
+  [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
@@ -23,14 +27,19 @@ export const flippingAtom = atom([
   [false, false, false, false, false]
 ]);
 
-let a = [];
-r = [''];
+export const gridAtom = atom([
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', '']
 
-for (let i = 0; i < letterCount; i++) {
-
-}
+]);
 
 export const correctAtom = atom([
+  [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
   [false, false, false, false, false],
