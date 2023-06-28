@@ -46,7 +46,6 @@ export default function Navbar() {
       b.push(a);
     }
     setGrid(b);
-    console.log(grid);
   }
 
   function save() {
@@ -72,7 +71,7 @@ export default function Navbar() {
             <div className="navbar-nav">
               <a className="nav-link active" aria-current="page" href="#">Home</a>
               <a className="nav-link" href="#">Features</a>
-              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button onclick='this.blur()' type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Settings</button></div>
           </div>
         </div>
