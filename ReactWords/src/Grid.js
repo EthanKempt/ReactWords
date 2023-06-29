@@ -17,7 +17,8 @@ export default function Grid() {
 
   useEffect(() => {
     const handleKeyUp = (event) => {
-      const key = event.key;
+      event.preventDefault();
+      const key = event.key;      
       const size = key.length;
       if (row < 7 && solved == false) {
         if (key === 'Backspace') {
@@ -34,8 +35,14 @@ export default function Grid() {
     };
     window.addEventListener('keyup', handleKeyUp);
 
+    const handleKeyDown = (event) => {
+      event.preventDefault();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('keydown', handleKeyDown);
     }
   });
 
